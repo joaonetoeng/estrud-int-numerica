@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %} Admin {% endblock %}
+
+{% block nav %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <a class="navbar-brand" href="#"><strong>Estrud</strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+            <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin' %}">Início</a>
+                  </li>
+            </ul>
+</nav>
+
+{% endblock %}
+
+{% block main %}
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'admin' %}">Início</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'pilares' %}">Pilares</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'index_int_numerica' %}">Integração Numérica</a></li>
+        <li class="breadcrumb-item active" aria-current="page">New</li>
+
+      </ol>
+    </nav>
+
+
+    <div class="row">
+          <div class="col-4">
+              <form method="POST">{% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                             <label for="{{ form.descricao.id_for_label }}">Descrição:</label>
+                            {{ form.descricao }}
+                        </div>
+                        <div class="form-group col-md-6">
+                             <label for="{{ form.l.id_for_label }}">L(m):</label>
+                            {{ form.l }}
+                        </div>
+                        <div class="form-group col-md-6">
+                             <label for="{{ form.l.id_for_label }}">Discretizar(Quant.):</label>
+                            {{ form.discretizar }}
+                        </div>
+                        <div class="form-group col-md-6">
+                             <label for="{{ form.p.id_for_label }}">P(tf):</label>
+                            {{ form.p }}
+                        </div>
+                        <div class="form-group col-md-6">
+                             <label for="{{ form.p.id_for_label }}">M(tf.m):</label>
+                            {{ form.m }}
+                        </div>
+                        <div class="form-group col-md-6">
+                             <label for="{{ form.p.id_for_label }}">H(tf):</label>
+                            {{ form.h }}
+                        </div>
+                        <div class="form-group col-md-6">
+                             <label for="{{ form.p.id_for_label }}">Q(tf/m):</label>
+                            {{ form.q }}
+                        </div>
+                        <div class="form-group col-md-6">
+                             <label for="{{ form.p.id_for_label }}">EI(tf/m²):</label>
+                            {{ form.ei }}
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-dark btn-block">Calcular</button>
+              </form>
+          </div>
+          <div class="col-8">
+
+              <table class="table table-sm table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="p-10">Iteração</th>
+                      <th scope="col">Seção i</th>
+                      <th scope="col">xi</th>
+                      <th scope="col">e2xi</th>
+                      <th scope="col">Mxi=M</th>
+                      <th scope="col">(1/r)xi</th>
+                      <th scope="col">rotação-xi</th>
+                      <th scope="col">Vi</th>
+                    </tr>
+                  </thead>
+                   <tbody>
+                                    {{ data }} <br><br>
+                                    {{ data }}
+                                    {% for i in data %}
+                                    <tr>
+                                      <th scope="row"></th>
+                                      <td> {{ secoes }} </td>
+                                      <td> xis</td>
+                                      <td>0</td>
+                                      <td>-6.0000</td>
+                                      <td>0.0060</td>
+                                      <td>0.0240</td>
+                                      <td>0.0480</td>
+
+                                    </tr>
+                                    {% endfor %}
+                  <tbody>
+              </table>
+          </div>
+    </div>
+
+
+
+{% endblock %}

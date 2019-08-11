@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+
+
+{% block title %} Admin {% endblock %}
+
+{% block nav %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <a class="navbar-brand" href="#"><strong>Estrud</strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+            <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin' %}">Início</a>
+                  </li>
+            </ul>
+</nav>
+
+{% endblock %}
+
+{% block main %}
+
+    <div class="jumbotron">
+
+    <form method="post">
+
+    {% csrf_token %}
+    {{ form|bootstrap }}
+    <button type="submit" class="btn btn-secondary"> Processar </button>
+    </form>
+
+
+
+<form method="post">
+    <input type="text" name="name">
+    <button type="submit">Enviar</button>
+</form>
+
+    </div>
+
+
+{% endblock %}

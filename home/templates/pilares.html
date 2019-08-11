@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Admin {% endblock %}
+
+
+{% block nav %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <a class="navbar-brand" href="{% url 'home' %}"><strong>Estrud</strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
+{% endblock %}
+
+{% block main %}
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'admin' %}">Início</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Pilares</li>
+      </ol>
+    </nav>
+
+    <a href="{% url 'index' %}" class="btn btn-secondary"> Analise P delta </a>
+    <a href="{% url 'index_int_numerica' %}" class="btn btn-secondary"> Integração Numérica </a>
+
+{% endblock %}

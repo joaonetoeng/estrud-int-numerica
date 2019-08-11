@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Seja bem vindo {% endblock %}
+
+{% block nav %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <a class="navbar-brand" href="{% url 'home' %}"><strong>Estrud</strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
+{% endblock %}
+
+{% block main %}
+
+    <h4><strong>Estrud</strong></h4>
+    <p>Aplicativos para análise e dimensionamento de estruturas</p>
+    {% if user.is_authenticated %}
+                <p>Olá {{ user.username }}</p>
+                <a href="{% url 'admin' %}">Início</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-info"><strong>Entrar</strong></a>
+            {% endif %}
+
+{% endblock %}
+
+{% block footer %}
+
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <span class="text-muted">&copy; Since 2019</span>
+  </div>
+</footer>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Admin {% endblock %}
+
+{% block nav %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <a class="navbar-brand" href="#"><strong>Estrud</strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+            <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin' %}">Início</a>
+                  </li>
+            </ul>
+</nav>
+
+{% endblock %}
+
+{% block main %}
+
+    <p>Tem certeza que deseja excluir {{ memory.descricao }} </p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+
+{% endblock %}
